@@ -13,14 +13,36 @@ namespace Infrastucture.Configuration
     public class ContextBase : IdentityDbContext<ApplicationUser>
     {
         public ContextBase(DbContextOptions<ContextBase> options) : base(options)
-        { 
+        {
 
         }
-            public DbSet<DebitCard> DebitCards { get; set; }
-            public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<DebitCard> DebitCards { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(ObterStringConexao());
+                base.OnConfiguring(optionsBuilder);
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
+            base.OnModelCreating(builder);
+        }
 
 
-        
-        
+
+        public string ObterStringConexao()
+        {
+            return "Data Source=DSPC\\SQLEXPRESS; Catalog=Nubank; Integrated Security=True";
+        }
+
+
+
+
     }
 }
