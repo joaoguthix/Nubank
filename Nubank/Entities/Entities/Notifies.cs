@@ -38,5 +38,21 @@ namespace Entities.Entities
             return true;
 
         }
+        public bool ValidarPropriedadeInt(int valor, string nomePropriedade)
+        {
+            if (valor < 1 || string.IsNullOrWhiteSpace(nomePropriedade))
+            {
+                Notitycoes.Add(new Notifies
+                {
+
+                    Mensagem = "Campo obrigatório",
+                    NomePropriedade = nomePropriedade,
+                });
+                return false;
+
+            }
+            return true;
+
+        }
     }
 }
