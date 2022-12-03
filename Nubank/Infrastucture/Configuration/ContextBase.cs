@@ -38,7 +38,7 @@ namespace Infrastucture.Configuration
 
         public string ObterStringConexao()
         {
-            return "Data Source=DSPC\\SQLEXPRESS; Catalog=Nubank; Integrated Security=True";
+            return "Data Source=DSPC\\SQLEXPRESS; Initial Catalog=Nubank; Integrated Security=True";
         }
 
 

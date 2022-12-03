@@ -11,6 +11,7 @@ namespace Entities.Entities
     [Table("TB_DEBIT_CARD")]
     public class DebitCard : Notifies
     {
+        [Column("MSN_ID")]
         public int Id { get; set; }
         
         [Column("NAME_CARD")]

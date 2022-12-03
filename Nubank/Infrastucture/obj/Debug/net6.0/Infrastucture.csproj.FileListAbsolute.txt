@@ -1,5 +1,0 @@
-C:\Users\João\source\repos\Nubank\Nubank\Infrastucture\obj\Debug\net6.0\Infrastucture.csproj.AssemblyReference.cache
-C:\Users\João\source\repos\Nubank\Nubank\Infrastucture\obj\Debug\net6.0\Infrastucture.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\João\source\repos\Nubank\Nubank\Infrastucture\obj\Debug\net6.0\Infrastucture.AssemblyInfoInputs.cache
-C:\Users\João\source\repos\Nubank\Nubank\Infrastucture\obj\Debug\net6.0\Infrastucture.AssemblyInfo.cs
-C:\Users\João\source\repos\Nubank\Nubank\Infrastucture\obj\Debug\net6.0\Infrastucture.csproj.CoreCompileInputs.cache
