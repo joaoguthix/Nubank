@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces.InterfaceService;
+﻿using Domain.Interfaces;
+using Domain.Interfaces.InterfaceService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace Domain.Services
 {
     public class ServiceDebitCard : IServiceDebitCard
     {
-        private readonly IServiceDebitCard _IServiceDebitCard;
+        private readonly IDebitCard _IDebitCard;
 
-        public ServiceDebitCard(IServiceDebitCard IServiceDebitCard)
+        public ServiceDebitCard(IDebitCard IDebitCard)
         {
-            _IServiceDebitCard = IServiceDebitCard;
+            _IDebitCard = IDebitCard;
         }
 
     }

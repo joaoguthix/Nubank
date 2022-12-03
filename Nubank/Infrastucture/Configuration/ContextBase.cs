@@ -34,15 +34,10 @@ namespace Infrastucture.Configuration
             base.OnModelCreating(builder);
         }
 
-
-
         public string ObterStringConexao()
         {
-            return "Data Source=DSPC\\SQLEXPRESS; Initial Catalog=Nubank; Integrated Security=True";
+            return "Data Source=DSPC\\SQLEXPRESS;Initial Catalog=Nubank;Integrated Security=True";
         }
-
-
-
 
     }
 }
