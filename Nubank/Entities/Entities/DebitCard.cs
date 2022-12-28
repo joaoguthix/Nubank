@@ -16,13 +16,13 @@ namespace Entities.Entities
         
         [Column("NAME_CARD")]
         [MaxLength(35)]
-        public string NameDebitCard { get; set; }
+        public string? NameDebitCard { get; set; }
 
         [Column("Number_CARD")]
-        public string NumberDebitCard { get; set; }
+        public string? NumberDebitCard { get; set; }
 
         [Column("SECURITY_NUMBER_CARD")]
-        public string SecurityNumber { get; set; }
+        public string? SecurityNumber { get; set; }
 
         [Column("CREATION_DATE_CARD")]
         public DateTime CreationDate { get; set; }
@@ -32,9 +32,9 @@ namespace Entities.Entities
 
         [ForeignKey("ApplicationUser")]
         [Column(Order = 1)]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
 
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser? ApplicationUser { get; set; }
 
     }
 }

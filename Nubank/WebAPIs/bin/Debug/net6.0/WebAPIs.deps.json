@@ -12,6 +12,7 @@
           "Infrastucture": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.11",
           "Microsoft.AspNetCore.Identity.UI": "6.0.11",
+          "Microsoft.Azure.Amqp": "2.5.12",
           "Microsoft.EntityFrameworkCore": "6.0.11",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.11",
           "Microsoft.Extensions.Identity.Stores": "6.0.11",
@@ -115,6 +116,14 @@
           "lib/net6.0/Microsoft.AspNetCore.Identity.UI.dll": {
             "assemblyVersion": "6.0.11.0",
             "fileVersion": "6.0.1122.52304"
+          }
+        }
+      },
+      "Microsoft.Azure.Amqp/2.5.12": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.Amqp.dll": {
+            "assemblyVersion": "2.4.0.0",
+            "fileVersion": "2.2.0.0"
           }
         }
       },
@@ -761,6 +770,13 @@
       "sha512": "sha512-t/K4fXPmOMSoCMtUUFe3uIsDzew5fiYTkHaO55/2eHS8VENzZ5Csl+qq6/ir1cYGH/3YAp3iN0+2O42fW5IF3A==",
       "path": "microsoft.aspnetcore.identity.ui/6.0.11",
       "hashPath": "microsoft.aspnetcore.identity.ui.6.0.11.nupkg.sha512"
+    },
+    "Microsoft.Azure.Amqp/2.5.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0SlEl+TSQdpjXWf9/37dXWAa0zk6R1EJKmGtGZeKUAH7WEQpJOWMxJ9I43igcBCnTkFwa28CdPnpSCjFZVQlkw==",
+      "path": "microsoft.azure.amqp/2.5.12",
+      "hashPath": "microsoft.azure.amqp.2.5.12.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",

@@ -1,10 +1,3 @@
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.csproj.AssemblyReference.cache
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.AssemblyInfoInputs.cache
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.AssemblyInfo.cs
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.csproj.CoreCompileInputs.cache
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\appsettings.json
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\WebAPIs.staticwebassets.runtime.json
@@ -15,6 +8,8 @@ C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\WebAPIs.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\WebAPIs.pdb
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Humanizer.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\System.Web.Http.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -39,9 +34,11 @@ C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Ide
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Swashbuckle.Core.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\System.Drawing.Common.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
@@ -67,6 +64,13 @@ C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Infrastucture
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Infrastucture.pdb
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Domain.pdb
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Entities.pdb
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.csproj.AssemblyReference.cache
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.AssemblyInfoInputs.cache
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.AssemblyInfo.cs
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.csproj.CoreCompileInputs.cache
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\staticwebassets\msbuild.WebAPIs.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\staticwebassets\msbuild.build.WebAPIs.props
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebAPIs.props
@@ -81,7 +85,4 @@ C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\refint\WebAPI
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.pdb
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.genruntimeconfig.cache
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\ref\WebAPIs.dll
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\System.Net.Http.Formatting.dll
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\System.Web.Http.dll
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Newtonsoft.Json.dll
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Swashbuckle.Core.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Azure.Amqp.dll

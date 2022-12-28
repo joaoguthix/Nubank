@@ -42,7 +42,7 @@ namespace WebAPIs.Controllers
 
             if (resultado.Succeeded)
             {
-                // Recupera Usuário Logado
+                // Recupera Usuário Logadomonte
                 var userCurrent = await _userManager.FindByEmailAsync(login.Email);
                 var idUsuario = userCurrent.Id;
 
@@ -87,6 +87,48 @@ namespace WebAPIs.Controllers
             {
                 return Ok(resultado.Errors);
             }
+
+
+
+            // Geração de Confirmação caso precise
+            var userId = await _userManager.GetUserIdAsync(user);
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+
+            // retorno email 
+            code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+            var resultado2 = await _userManager.ConfirmEmailAsync(user, code);
+
+            if (resultado2.Succeeded)
+                return Ok("Usuário Adicionado com Sucesso");
+            else
+                return Ok("Erro ao confirmar usuários");
+
+        }
+        [AllowAnonymous]
+        [Produces("application/json")]
+        [HttpPost("/api/AdicionaUsuarioAdminIdentity")]
+        public async Task<IActionResult> AdicionaUsuarioAdminIdentity([FromBody] Login login)
+        {
+            if (string.IsNullOrWhiteSpace(login.Email) || string.IsNullOrWhiteSpace(login.Senha))
+                return Ok("Falta alguns dados");
+
+
+            var user = new ApplicationUser
+            {
+                UserName = login.Email,
+                Email = login.Email,
+                CPF = login.CPF,
+                Tipo = TipoUsuario.Admin,
+            };
+
+            var resultado = await _userManager.CreateAsync(user, login.Senha);
+
+            if (resultado.Errors.Any())
+            {
+                return Ok(resultado.Errors);
+            }
+
 
 
             // Geração de Confirmação caso precise
