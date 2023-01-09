@@ -17,7 +17,7 @@ namespace Infrastucture.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.11")
+                .HasAnnotation("ProductVersion", "6.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -31,7 +31,6 @@ namespace Infrastucture.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CPF")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("USR_CPF");
 
@@ -96,6 +95,35 @@ namespace Infrastucture.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Entities.Entities.CurrentAccount", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Account")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ACCOUNT");
+
+                    b.Property<long>("Balance")
+                        .HasColumnType("bigint")
+                        .HasColumnName("BALANCE");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnOrder(1);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CURRENT_ACCOUNT");
+                });
+
             modelBuilder.Entity("Entities.Entities.DebitCard", b =>
                 {
                     b.Property<int>("Id")
@@ -109,32 +137,37 @@ namespace Infrastucture.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("ALTERED_DATE_CARD");
 
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit")
+                        .HasColumnName("MSN_ATIVO");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2")
                         .HasColumnName("CREATION_DATE_CARD");
 
+                    b.Property<int?>("CurrentAccountId")
+                        .HasColumnType("int");
+
                     b.Property<string>("NameDebitCard")
-                        .IsRequired()
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)")
                         .HasColumnName("NAME_CARD");
 
                     b.Property<string>("NumberDebitCard")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Number_CARD");
 
                     b.Property<string>("SecurityNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("SECURITY_NUMBER_CARD");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)")
                         .HasColumnOrder(1);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CurrentAccountId");
 
                     b.HasIndex("UserId");
 
@@ -278,15 +311,28 @@ namespace Infrastucture.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Entities.Entities.DebitCard", b =>
+            modelBuilder.Entity("Entities.Entities.CurrentAccount", b =>
                 {
                     b.HasOne("Entities.Entities.ApplicationUser", "ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("Entities.Entities.DebitCard", b =>
+                {
+                    b.HasOne("Entities.Entities.CurrentAccount", "CurrentAccount")
+                        .WithMany()
+                        .HasForeignKey("CurrentAccountId");
+
+                    b.HasOne("Entities.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("CurrentAccount");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

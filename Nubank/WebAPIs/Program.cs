@@ -10,6 +10,7 @@ using Infrastucture.Repository.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using SendGrid.Extensions.DependencyInjection;
 using WebAPIs.Models;
 using WebAPIs.Token;
 
@@ -43,6 +44,14 @@ builder.Services.AddSingleton<IDebitCard, RepositoryDebitCard>();
 //SERVIÇO DOMINIO
 
 builder.Services.AddSingleton<IServiceDebitCard, ServiceDebitCard>();
+
+//SENDGRID
+
+builder.Services.AddSendGrid(options =>
+{
+    options.ApiKey = builder.Configuration
+    .GetSection("SendGridEmailSettings").GetValue<string>("APIKey");
+});
 
 //JWT
 

@@ -3,11 +3,7 @@ using Entities.Entities;
 using Infrastucture.Configuration;
 using Infrastucture.Repository.Generics;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Infrastucture.Repository.Repositories
 {
@@ -23,5 +19,12 @@ namespace Infrastucture.Repository.Repositories
 
         }
 
+        public async Task<List<DebitCard>> ListarDebitCards(Expression<Func<DebitCard, bool>> exDebitCard)
+        {
+            using (var banco = new ContextBase(_OptionsBuilder))
+            {
+                return await banco.DebitCards.Where(exDebitCard).AsNoTracking().ToListAsync();
+            }
+        }
     }
 }

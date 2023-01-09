@@ -1,15 +1,11 @@
 ﻿using Domain.Interfaces.Generics;
 using Entities.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Domain.Interfaces
 {
     public interface IDebitCard : IGeneric<DebitCard>
     {
-
+        Task<List<DebitCard>> ListarDebitCards(Expression<Func<DebitCard, bool>> exDebitCard);
     }
 }

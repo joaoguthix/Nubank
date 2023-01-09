@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.Azure.Amqp.Framing;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace WebAPIs.Models
 {

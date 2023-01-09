@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using Domain.Interfaces;
+using Domain.Interfaces.InterfaceService;
 using Entities.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using WebAPIs.Models;
 
 namespace WebAPIs.Controllers
@@ -14,11 +17,19 @@ namespace WebAPIs.Controllers
 
         private readonly IMapper _IMapper;
         private readonly IDebitCard _IDebitCard;
-
-        public DebitCardController(IMapper IMapper, IDebitCard IDebitCard)
+        private readonly ISendGridClient _sendGridClient;
+        private readonly IConfiguration _configuration;
+        private readonly IServiceDebitCard _IServiceDebitCard;
+        public DebitCardController(IMapper IMapper, IDebitCard IDebitCard,
+            ISendGridClient sendGridClient, IConfiguration configuration,
+            IServiceDebitCard IServiceDebitCard)
         {
             _IMapper = IMapper;
             _IDebitCard = IDebitCard;
+            _IServiceDebitCard = IServiceDebitCard;
+            _sendGridClient = sendGridClient;
+            _configuration = configuration;
+            
         }
 
 
@@ -30,7 +41,8 @@ namespace WebAPIs.Controllers
             debitCard.UserId = await RetornarIdUsuarioLogado();
 
             var debitCardMap = _IMapper.Map<DebitCard>(debitCard);
-            await _IDebitCard.Add(debitCardMap);
+            /*await _IDebitCard.Add(debitCardMap);*/
+            await _IServiceDebitCard.Adicionar(debitCardMap);
 
             return debitCardMap.Notitycoes;
         }
@@ -44,7 +56,8 @@ namespace WebAPIs.Controllers
             debitCard.UserId = await RetornarIdUsuarioLogado();
 
             var debitCardMap = _IMapper.Map<DebitCard>(debitCard);
-            await _IDebitCard.Update(debitCardMap);
+            /*await _IDebitCard.Update(debitCardMap);*/
+            await _IServiceDebitCard.Atualizar(debitCardMap);
 
             return debitCardMap.Notitycoes;
         }
@@ -85,6 +98,17 @@ namespace WebAPIs.Controllers
             return debitCardMap;
         }
 
+        [Authorize]
+        [Produces("application/json")]
+        [HttpPost("/api/ListDebitCardAtivos")]
+        public async Task<List<DebitCardViewModel>> ListarDebitCardsAtivos()
+        {
+            var debitCard = await _IServiceDebitCard.ListarDebitCardsAtivos();
+            var debitCardMap = _IMapper.Map<List<DebitCardViewModel>>(debitCard);
+
+            return debitCardMap;
+        }
+
         private async Task<string> RetornarIdUsuarioLogado()
         {
             if( User != null)
@@ -94,6 +118,29 @@ namespace WebAPIs.Controllers
             }
 
             return string.Empty;
+        }
+
+        [HttpGet]
+        [Route("send-text-mail")]
+        public async Task<IActionResult> SendPlainTextEmail(string toEmail)
+        {
+            string fromEmail = _configuration.GetSection("SendGridEmailSettings")
+            .GetValue<string>("FromEmail");
+
+            string fromName = _configuration.GetSection("SendGridEmailSettings")
+            .GetValue<string>("FromName");
+
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress(fromEmail, fromName),
+                Subject = "Nubank",
+                PlainTextContent = "Obrigado por escolher nossos Serviços!"
+            };
+            msg.AddTo(toEmail);
+            var response = await _sendGridClient.SendEmailAsync(msg);
+            string message = response.IsSuccessStatusCode ? "Email Send Successfully" :
+            "Email Sending Failed";
+            return Ok(message);
         }
 
     }

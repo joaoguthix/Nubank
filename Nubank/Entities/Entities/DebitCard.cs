@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.Entities
 {
@@ -26,8 +21,12 @@ namespace Entities.Entities
 
         [Column("CREATION_DATE_CARD")]
         public DateTime CreationDate { get; set; }
+
         [Column("ALTERED_DATE_CARD")]
         public DateTime AlteredDate { get; set; }
+
+        [Column("MSN_ATIVO")]
+        public bool Ativo { get; set; }
 
 
         [ForeignKey("ApplicationUser")]
@@ -36,5 +35,12 @@ namespace Entities.Entities
 
         public virtual ApplicationUser? ApplicationUser { get; set; }
 
+        public virtual CurrentAccount? CurrentAccount { get; set; }
+
     }
 }
+/*        [Column("MSN_IMAGE")]
+        public ImageFileMachine Images { get; set; }
+
+        [Column("IMAGE")]
+        public FileOptions Image { get; set; }*/
