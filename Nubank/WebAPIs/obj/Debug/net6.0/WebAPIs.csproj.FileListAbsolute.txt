@@ -15,6 +15,7 @@ C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Asp
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Azure.Amqp.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -35,6 +36,9 @@ C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Ide
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\SendGrid.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\SendGrid.Extensions.DependencyInjection.dll
+C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\StarkbankEcdsa.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -85,7 +89,3 @@ C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\refint\WebAPI
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.pdb
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\WebAPIs.genruntimeconfig.cache
 C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\obj\Debug\net6.0\ref\WebAPIs.dll
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\Microsoft.Azure.Amqp.dll
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\SendGrid.dll
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\SendGrid.Extensions.DependencyInjection.dll
-C:\Users\João\source\repos\Nubank\Nubank\WebAPIs\bin\Debug\net6.0\StarkbankEcdsa.dll

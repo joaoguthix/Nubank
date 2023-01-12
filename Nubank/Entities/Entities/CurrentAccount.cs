@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,10 +15,18 @@ namespace Entities.Entities
         public int Id { get; set; }
 
         [Column("ACCOUNT")]
-        public string Account { get; set; }
+        public int? Account { get; set; }
 
         [Column("BALANCE")]
         public long Balance { get; set; }
+
+        [Column("Ativo")]
+        public bool Ativo { get; set; }
+
+        [Column("CREATE_ACCOUNT_DATE")]
+        public DateTime CreateAccountDate { get; set; } = DateTime.Now;
+
+        public TipoAccount? Tipo { get; set; }
 
 
         [ForeignKey("ApplicationUser")]

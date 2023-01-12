@@ -12,6 +12,7 @@ namespace Infrastucture.Configuration
         {
 
         }
+        public DbSet<CurrentAccount> CurrentAccounts { get; set; }
         public DbSet<DebitCard> DebitCards { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
