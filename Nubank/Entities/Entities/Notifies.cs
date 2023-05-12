@@ -49,5 +49,19 @@ namespace Entities.Entities
             return true;
 
         }
+
+        public bool ValidaIdDebit(int idValue)
+        {
+            if(idValue > 1)
+            {
+                Notitycoes.Add(new Notifies
+                {
+                    Mensagem = "Cartão já existe",
+                }) ;
+                return false;
+
+            }
+            return true;
+        }
     }
 }

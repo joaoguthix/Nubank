@@ -14,10 +14,8 @@ namespace Domain.Services
 
         public Task Adicionar(CurrentAccount Objeto)
         {
-            Random value = new Random(10);
             Objeto.CreateAccountDate= DateTime.Now.AddYears(20);
             Objeto.Ativo = true;
-            Objeto.Account = value;
             throw new NotImplementedException();
         }
 

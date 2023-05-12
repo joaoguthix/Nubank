@@ -16,7 +16,8 @@ namespace Domain.Services
         public async Task Adicionar(DebitCard objeto)
         {
             var validarTitulo = objeto.ValidarPropriedadeString(objeto.NameDebitCard, "NameDebitCard");
-            if (validarTitulo)
+            var validaId = objeto.ValidaIdDebit(objeto.Id);
+            if (validarTitulo || validaId)
             {
                 objeto.CreationDate = DateTime.Now;
                 objeto.AlteredDate = DateTime.Now.AddYears(5);
