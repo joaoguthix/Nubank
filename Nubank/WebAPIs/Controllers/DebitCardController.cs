@@ -1,11 +1,14 @@
-﻿using AutoMapper;
+﻿using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.Net;
+using System.Xml.Linq;
+using AutoMapper;
 using Domain.Interfaces;
 using Domain.Interfaces.InterfaceService;
 using Entities.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SendGrid;
-using SendGrid.Helpers.Mail;
+using Microsoft.Extensions.Caching.Memory;
 using WebAPIs.Models;
 
 namespace WebAPIs.Controllers
@@ -17,19 +20,21 @@ namespace WebAPIs.Controllers
 
         private readonly IMapper _IMapper;
         private readonly IDebitCard _IDebitCard;
-        private readonly ISendGridClient _sendGridClient;
+        /*private readonly ISendGridClient _sendGridClient;*/
         private readonly IConfiguration _configuration;
         private readonly IServiceDebitCard _IServiceDebitCard;
+        private readonly IMemoryCache _IMemoryCache;
         public DebitCardController(IMapper IMapper, IDebitCard IDebitCard,
-            ISendGridClient sendGridClient, IConfiguration configuration,
-            IServiceDebitCard IServiceDebitCard)
+            /*ISendGridClient sendGridClient,*/ IConfiguration configuration,
+            IServiceDebitCard IServiceDebitCard, IMemoryCache IMemoryCache)
         {
             _IMapper = IMapper;
             _IDebitCard = IDebitCard;
             _IServiceDebitCard = IServiceDebitCard;
-            _sendGridClient = sendGridClient;
+            /*_sendGridClient = sendGridClient;*/
             _configuration = configuration;
-            
+            _IMemoryCache = IMemoryCache;
+
         }
 
 
@@ -38,9 +43,25 @@ namespace WebAPIs.Controllers
         [HttpPost("/api/Add")]
         public async Task<List<Notifies>> Add(DebitCardViewModel debitCard)
         {
-            debitCard.UserId = await RetornarIdUsuarioLogado();
+            var userId = await RetornarIdUsuarioLogado();
+            debitCard.UserId = userId;
+
+            var verificaCartao = await _IServiceDebitCard.VerifyCard(new DebitCard
+            {
+                UserId = userId,
+                NameDebitCard = debitCard.NameDebitCard,
+                NumberDebitCard = debitCard.NumberDebitCard
+            });
+
+            if (verificaCartao)
+            {
+                throw new ("Card already exists");
+
+            }
+            
 
             var debitCardMap = _IMapper.Map<DebitCard>(debitCard);
+            /*debitCardMap.NameDebitCard = debitCard.NameDebitCard; ;*/
             /*await _IDebitCard.Add(debitCardMap);*/
             await _IServiceDebitCard.Adicionar(debitCardMap);
 
@@ -71,7 +92,7 @@ namespace WebAPIs.Controllers
             debitCard.UserId = await RetornarIdUsuarioLogado();
 
             var debitCardMap = _IMapper.Map<DebitCard>(debitCard);
-            await _IDebitCard.Delete (debitCardMap);
+            await _IDebitCard.Delete(debitCardMap);
 
             return debitCardMap.Notitycoes;
         }
@@ -111,7 +132,7 @@ namespace WebAPIs.Controllers
 
         private async Task<string> RetornarIdUsuarioLogado()
         {
-            if( User != null)
+            if (User != null)
             {
                 var idUsuario = User.FindFirst("idUsuario");
                 return idUsuario.Value;
@@ -120,7 +141,7 @@ namespace WebAPIs.Controllers
             return string.Empty;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         [Route("send-text-mail")]
         public async Task<IActionResult> SendPlainTextEmail(string toEmail)
         {
@@ -141,7 +162,7 @@ namespace WebAPIs.Controllers
             string message = response.IsSuccessStatusCode ? "Email Send Successfully" :
             "Email Sending Failed";
             return Ok(message);
-        }
+        }*/
 
     }
 }

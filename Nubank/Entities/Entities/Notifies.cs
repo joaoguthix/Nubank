@@ -2,6 +2,9 @@
 
 namespace Entities.Entities
 {
+
+    /* Class where a list of validations normally used only
+       for global and generic notifies will be defined*/
     public class Notifies
     {
         public Notifies()
@@ -50,18 +53,19 @@ namespace Entities.Entities
 
         }
 
-        public bool ValidaIdDebit(int idValue)
+        /*public bool ValidaIdDebit(int idValue, string nomePropriedade)
         {
-            if(idValue > 1)
+            if(idValue >= 0)
             {
                 Notitycoes.Add(new Notifies
                 {
                     Mensagem = "Cartão já existe",
+                    NomePropriedade = nomePropriedade,
                 }) ;
                 return false;
 
             }
             return true;
-        }
+        }*/
     }
 }

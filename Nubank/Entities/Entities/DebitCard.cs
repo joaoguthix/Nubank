@@ -29,8 +29,8 @@ namespace Entities.Entities
         [Column("MSN_ATIVO")]
         public bool Ativo { get; set; }
 
-        [Column("TIPO")]
-        public TipoCard? Tipo { get; set; }
+        /*[Column("TIPO")]
+        public TipoCard? Tipo { get; set; }*/
 
 
         [ForeignKey("ApplicationUser")]

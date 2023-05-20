@@ -9,5 +9,8 @@ namespace Domain.Interfaces.InterfaceService
         Task Atualizar(DebitCard objeto);
 
         Task<List<DebitCard>> ListarDebitCardsAtivos();
+
+        Task<bool> VerifyCard(DebitCard objeto);
+
     }
 }

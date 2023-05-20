@@ -47,11 +47,11 @@ builder.Services.AddSingleton<IServiceDebitCard, ServiceDebitCard>();
 
 //SENDGRID
 
-builder.Services.AddSendGrid(options =>
+/*builder.Services.AddSendGrid(options =>
 {
     options.ApiKey = builder.Configuration
     .GetSection("SendGridEmailSettings").GetValue<string>("APIKey");
-});
+});*/
 
 //JWT
 
