@@ -104,14 +104,24 @@ namespace Infrastucture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Account")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<int?>("Account")
+                        .HasColumnType("int")
                         .HasColumnName("ACCOUNT");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit")
+                        .HasColumnName("Ativo");
 
                     b.Property<long>("Balance")
                         .HasColumnType("bigint")
                         .HasColumnName("BALANCE");
+
+                    b.Property<DateTime>("CreateAccountDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CREATE_ACCOUNT_DATE");
+
+                    b.Property<int?>("Tipo")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)")

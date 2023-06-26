@@ -41,7 +41,7 @@ namespace WebAPIs.Controllers
         [Authorize]
         [Produces("application/json")]
         [HttpPost("/api/Add")]
-        public async Task<List<Notifies>> Add(DebitCardViewModel debitCard)
+        public async Task<List<Notifies>> Add([FromBody] DebitCardViewModel debitCard)
         {
             var userId = await RetornarIdUsuarioLogado();
             debitCard.UserId = userId;
@@ -72,7 +72,7 @@ namespace WebAPIs.Controllers
         [Authorize]
         [Produces("application/json")]
         [HttpPost("/api/Update")]
-        public async Task<List<Notifies>> Update(DebitCardViewModel debitCard)
+        public async Task<List<Notifies>> Update([FromBody]DebitCardViewModel debitCard)
         {
             debitCard.UserId = await RetornarIdUsuarioLogado();
 
