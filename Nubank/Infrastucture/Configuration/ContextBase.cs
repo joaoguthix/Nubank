@@ -1,6 +1,7 @@
 ﻿using Entities.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Infrastucture.Configuration
 {
@@ -31,11 +32,20 @@ namespace Infrastucture.Configuration
             base.OnModelCreating(builder);
         }
 
+        //public string ObterStringConexao()
+        //{
+        //    return "Data Source=DSPC\\SQLEXPRESS;Initial Catalog=Nubank;Integrated Security=True";
+        //}
         public string ObterStringConexao()
         {
-            //return "Data Source=DSPC\\SQLEXPRESS;Initial Catalog=Nubank;Integrated Security=True";
-            return "";
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            return configuration.GetConnectionString("DefaultConnection");
         }
+
 
     }
 }
