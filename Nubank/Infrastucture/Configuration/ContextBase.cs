@@ -34,7 +34,7 @@ namespace Infrastucture.Configuration
         public string ObterStringConexao()
         {
             //return "Data Source=DSPC\\SQLEXPRESS;Initial Catalog=Nubank;Integrated Security=True";
-            return "Data Source=tcp:zsly.database.windows.net,1433;Initial Catalog=zsly;Persist Security Info=False;User ID=zsly;Password=X!e2f372;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            return "";
         }
 
     }
