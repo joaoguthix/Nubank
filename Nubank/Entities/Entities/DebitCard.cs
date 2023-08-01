@@ -9,7 +9,7 @@ namespace Entities.Entities
     {
         [Column("MSN_ID")]
         public int Id { get; set; }
-        
+
         [Column("NAME_CARD")]
         [MaxLength(35)]
         public string? NameDebitCard { get; set; }

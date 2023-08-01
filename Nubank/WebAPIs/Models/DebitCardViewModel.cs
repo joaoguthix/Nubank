@@ -12,13 +12,12 @@ namespace WebAPIs.Models
         [Required]
         public string NumberDebitCard { get; set; }
 
-        [Required]
+        
         public string SecurityNumber { get; set; }
 
-        [Required]
         public DateTime CreationDate { get; set; }
 
-        [Required]
+       
         public DateTime AlteredDate { get; set; }
 
         [Required]

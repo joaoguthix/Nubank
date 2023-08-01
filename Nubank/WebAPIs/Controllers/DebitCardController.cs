@@ -20,18 +20,18 @@ namespace WebAPIs.Controllers
 
         private readonly IMapper _IMapper;
         private readonly IDebitCard _IDebitCard;
-        /*private readonly ISendGridClient _sendGridClient;*/
+        private readonly ISendGridClient _sendGridClient;
         private readonly IConfiguration _configuration;
         private readonly IServiceDebitCard _IServiceDebitCard;
         private readonly IMemoryCache _IMemoryCache;
         public DebitCardController(IMapper IMapper, IDebitCard IDebitCard,
-            /*ISendGridClient sendGridClient,*/ IConfiguration configuration,
+            ISendGridClient sendGridClient, IConfiguration configuration,
             IServiceDebitCard IServiceDebitCard, IMemoryCache IMemoryCache)
         {
             _IMapper = IMapper;
             _IDebitCard = IDebitCard;
             _IServiceDebitCard = IServiceDebitCard;
-            /*_sendGridClient = sendGridClient;*/
+            _sendGridClient = sendGridClient;
             _configuration = configuration;
             _IMemoryCache = IMemoryCache;
 
@@ -41,7 +41,7 @@ namespace WebAPIs.Controllers
         [Authorize]
         [Produces("application/json")]
         [HttpPost("/api/Add")]
-        public async Task<List<Notifies>> Add([FromBody] DebitCardViewModel debitCard)
+        public async Task<List<Notifies>> Add([FromQuery] DebitCardViewModel debitCard)
         {
             var userId = await RetornarIdUsuarioLogado();
             debitCard.UserId = userId;
@@ -71,8 +71,8 @@ namespace WebAPIs.Controllers
 
         [Authorize]
         [Produces("application/json")]
-        [HttpPost("/api/Update")]
-        public async Task<List<Notifies>> Update([FromBody]DebitCardViewModel debitCard)
+        [HttpPut("/api/Update")]
+        public async Task<List<Notifies>> Update(DebitCardViewModel debitCard)
         {
             debitCard.UserId = await RetornarIdUsuarioLogado();
 
@@ -86,21 +86,30 @@ namespace WebAPIs.Controllers
 
         [Authorize]
         [Produces("application/json")]
-        [HttpPost("/api/Delete")]
-        public async Task<List<Notifies>> Delete(DebitCardViewModel debitCard)
+        [HttpDelete("/api/Delete")]
+        public async Task<ActionResult<List<Notifies>>> Delete(int id)
         {
-            debitCard.UserId = await RetornarIdUsuarioLogado();
+            var debitCard = await _IServiceDebitCard.GetByEntityId(id);
+            if (debitCard == null)
+            {
+                return BadRequest("Debit card not found");
+            }
 
-            var debitCardMap = _IMapper.Map<DebitCard>(debitCard);
-            await _IDebitCard.Delete(debitCardMap);
+            var userId = await RetornarIdUsuarioLogado();
+            if (debitCard.UserId != userId)
+            {
+                return Forbid();
+            }
 
-            return debitCardMap.Notitycoes;
+            await _IDebitCard.Delete(debitCard);
+
+            return debitCard.Notitycoes;
         }
 
         [Authorize]
         [Produces("application/json")]
-        [HttpPost("/api/GetEntityById")]
-        public async Task<DebitCardViewModel> GetEntityById(DebitCard debitCard)
+        [HttpGet("/api/GetEntityById")]
+        public async Task<DebitCardViewModel> GetEntityById([FromQuery]DebitCard debitCard)
         {
             debitCard = await _IDebitCard.GetEntityById(debitCard.Id);
             var debitCardMap = _IMapper.Map<DebitCardViewModel>(debitCard);
@@ -141,9 +150,9 @@ namespace WebAPIs.Controllers
             return string.Empty;
         }
 
-        /*[HttpGet]
+        [HttpPost]
         [Route("send-text-mail")]
-        public async Task<IActionResult> SendPlainTextEmail(string toEmail)
+        public async Task<IActionResult> SendPlainTextEmail([FromQuery] string toEmail)
         {
             string fromEmail = _configuration.GetSection("SendGridEmailSettings")
             .GetValue<string>("FromEmail");
@@ -162,7 +171,7 @@ namespace WebAPIs.Controllers
             string message = response.IsSuccessStatusCode ? "Email Send Successfully" :
             "Email Sending Failed";
             return Ok(message);
-        }*/
+        }
 
     }
 }

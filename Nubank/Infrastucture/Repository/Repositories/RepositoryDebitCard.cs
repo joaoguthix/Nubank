@@ -21,10 +21,22 @@ namespace Infrastucture.Repository.Repositories
 
         public async Task<List<DebitCard>> ListarDebitCards(Expression<Func<DebitCard, bool>> exDebitCard)
         {
-            using (var banco = new ContextBase(_OptionsBuilder))
-            {
-                return await banco.DebitCards.Where(exDebitCard).AsNoTracking().ToListAsync();
-            }
+            using var banco = new ContextBase(_OptionsBuilder);
+            return await banco.DebitCards.Where(exDebitCard).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<DebitCard> GetEntityById(int id)
+        {
+            using var banco = new ContextBase(_OptionsBuilder);
+            return await banco.DebitCards.FindAsync(id);
+        }
+
+        public async Task Delete(DebitCard objeto)
+        {
+            using var banco = new ContextBase(_OptionsBuilder);
+            banco.Entry(objeto).State = EntityState.Deleted;
+            await banco.SaveChangesAsync();
         }
     }
+
 }

@@ -12,5 +12,9 @@ namespace Domain.Interfaces.InterfaceService
 
         Task<bool> VerifyCard(DebitCard objeto);
 
+        Task Delete(DebitCard objeto);
+
+        Task <DebitCard> GetByEntityId(int id);
+
     }
 }

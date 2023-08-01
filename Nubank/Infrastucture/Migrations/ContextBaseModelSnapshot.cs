@@ -110,7 +110,7 @@ namespace Infrastucture.Migrations
 
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit")
-                        .HasColumnName("Ativo");
+                        .HasColumnName("ACCOUNT_ATIVO");
 
                     b.Property<long>("Balance")
                         .HasColumnType("bigint")

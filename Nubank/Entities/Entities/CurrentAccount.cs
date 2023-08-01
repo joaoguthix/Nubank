@@ -1,4 +1,4 @@
-﻿using Entities.Enums;
+﻿﻿using Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,7 +20,7 @@ namespace Entities.Entities
         [Column("BALANCE")]
         public long Balance { get; set; }
 
-        [Column("Ativo")]
+        [Column("ACCOUNT_ATIVO")]
         public bool Ativo { get; set; }
 
         [Column("CREATE_ACCOUNT_DATE")]
