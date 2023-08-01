@@ -28,7 +28,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "DWS", Version = "v1" });
 
-    // Configuração para autenticação com Bearer Token
+    // ConfiguraÃ§Ã£o para autenticaÃ§Ã£o com Bearer Token
     var securityScheme = new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -55,9 +55,9 @@ Execute().Wait();
 
 
 static async Task Execute()
-{   //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 teste / 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 dws
+{   
     var apiKey = Environment.GetEnvironmentVariable("NAME_OF_THE_ENVIRONMENT_VARIABLE_FOR_YOUR_SENDGRID_KEY");
-    var client = new SendGridClient("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 ");
+    var client = new SendGridClient("");
     var from = new EmailAddress("guerreiroxx8@gmail.com", "slifer");
     var subject = "Sending with SendGrid is Fun";
     var to = new EmailAddress("joaorossetto7065@gmail.com", "Example User");
@@ -83,7 +83,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGenerics<>));
 builder.Services.AddSingleton<IDebitCard, RepositoryDebitCard>();
 
-//SERVIÇO DOMINIO
+//SERVIÃ‡O DOMINIO
 
 builder.Services.AddSingleton<IServiceDebitCard, ServiceDebitCard>();
 
